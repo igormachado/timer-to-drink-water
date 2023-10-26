@@ -18,5 +18,5 @@
 
 <h2>Foto do projeto finalizado</h2>
 
-<img src="/src/assets/timerWater01.png"/>
+<img src="/src/assets/timerWater03.png"/>
 <img src="/src/assets/timerWater02.png"/>
