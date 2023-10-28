@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+export const DivModal = styled.div`
+  width: 1614px;
+  height: 995px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  background: #121317;
+`
+
 export const ModalContainer = styled.div`
   width: 299px;
   height: 254px;
@@ -55,16 +63,16 @@ export const MainModal = styled.main`
     height: 58px;
     align-items: center;
     text-align: center;
-  }
 
-  p {
-    text-align: center;
-    color: ${(props) => props.theme['blue-light']};
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: 0.72px;
-    margin-left: 10px;
-    margin-right: 10px;
+    p {
+      text-align: center;
+      color: ${(props) => props.theme['blue-light']};
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0.72px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
 `

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { ChevronRight } from 'lucide-react'
 import glassOfWaterImg from '../../assets/glassOfWater.svg'
@@ -13,16 +14,24 @@ import {
   Separator,
   Timer,
 } from './styles'
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { Modal } from '../Modal'
 
 export function Main() {
   const [hoursTime, setHoursTime] = useState(0)
   const [minutesTime, setMinutesTime] = useState(5)
   const [countDown, setCountDown] = useState(60)
+  const [amountToDrink, setAmountToDrink] = useState(0)
+  const [totalWaterDrinked, setTotalWaterDrinked] = useState(0)
 
-  const totalWaterDrinked = Math.floor(90000 / 3000)
-  const glassOfWaterTotal = Math.floor(900 / 300)
+  function changeAmountToDrink() {
+    setAmountToDrink(Math.floor(2000 / 300))
+    setTotalWaterDrinked(Math.floor((2000 * 100) / 3000))
+  }
+
+  useEffect(() => {
+    changeAmountToDrink()
+  })
 
   function createCountDownMinutes() {
     if (countDown < 1) setCountDown(60)
@@ -47,23 +56,21 @@ export function Main() {
     return () => clearInterval(interval)
   }, [countDown, createCountDownMinutes])
 
-  function handleSubmitTimer(e) {
-    e.preventDefault('')
+  function handleSubmitTimer(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
     setCountDown(60)
   }
 
-  function handleChangeHourTime(e) {
-    setHoursTime(e.target.value)
+  function handleChangeHourTime(event: any) {
+    setHoursTime(event.target.value)
   }
 
-  function handleChangeMinuteTime(e) {
+  function handleChangeMinuteTime(e: any) {
     setMinutesTime(e.target.value)
   }
   function handleAddMinutesAndHours() {
     setHoursTime((state) => state)
     setMinutesTime((state) => state)
-    console.log(countDown)
-    console.log(minutesTime)
   }
 
   return (
@@ -71,7 +78,6 @@ export function Main() {
       <MainContainer>
         <MainArticle>
           <p>{totalWaterDrinked}%</p>
-          {/* <span>{countDown}</span> */}
           <img src={glassOfWaterImg} alt="copo cheio com água" />
           <footer>
             <p>Beber água</p>
@@ -84,14 +90,28 @@ export function Main() {
             <span>3000ml</span>
           </MetaBase>
           <ProgressBar>
-            <InputRange type="range" value={glassOfWaterTotal} step={10} />
+            <InputRange
+              type="range"
+              min={0}
+              max={10}
+              value={amountToDrink}
+              step={1}
+              onChange={changeAmountToDrink}
+            />
           </ProgressBar>
           <MetaBase>
             <span>Quantidade por timer</span>
             <span>300ml</span>
           </MetaBase>
           <ProgressBar>
-            <InputRange type="range" value={glassOfWaterTotal} step={10} />
+            <InputRange
+              type="range"
+              min={0}
+              max={10}
+              value={amountToDrink}
+              step={1}
+              onChange={changeAmountToDrink}
+            />
           </ProgressBar>
           <form onSubmit={handleSubmitTimer}>
             {minutesTime === 0 && hoursTime === 0 ? <Modal /> : ''}

@@ -34,14 +34,14 @@ export const HeaderGreeting = styled.p`
     line-height: 1.2;
   }
 
-  :last-child span {
+  span {
     color: ${(props) => props.theme['gray-100']};
     font-size: 24px;
     font-weight: 600;
     line-height: 1.2;
   }
 
-  :last-child img {
+  img {
     width: 25px;
     height: 25px;
     margin-left: 4px;

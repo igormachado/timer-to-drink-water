@@ -73,7 +73,6 @@ export const MetaBase = styled.p`
 export const ProgressBar = styled.p`
   width: 320px;
   height: 32px;
-  /* margin-top: 10px; */
 `
 
 export const InputRange = styled.input`
@@ -85,7 +84,7 @@ export const InputRange = styled.input`
   margin-bottom: 20px;
 `
 
-export const Timer = styled.p`
+export const Timer = styled.span`
   margin-top: 38px;
   display: flex;
   height: 64px;
